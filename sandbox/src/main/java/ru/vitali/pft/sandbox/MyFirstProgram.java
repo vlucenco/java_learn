@@ -4,13 +4,24 @@ public class MyFirstProgram {
 
   public static void main(String[] args) {
 
-    Point p1 = new Point(1, 4);
-    Point p2 = new Point(3, 5);
+    Point a = new Point(1, 4);
+    Point b = new Point(3, 5);
     System.out.println("Расстояние между точками " +
-            "А(" + p1.x + ";" + p1.y + ") и B(" + p2.x + ";" + p2.y + ")" + " = " + distance(p1, p2));
-  }
+            "А(" + a.x + ";" + a.y + ") и B(" + b.x + ";" + b.y + ")" + " = " + Point.distance(a, b));
 
-  public static double distance(Point p1, Point p2) {
-    return Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2));
+    Point c = new Point(3, 5);
+    Point d = new Point(1, 4);
+    System.out.println("Расстояние между точками " +
+            "C(" + c.x + ";" + c.y + ") и D(" + d.x + ";" + d.y + ")" + " = " + Point.distance(c, d));
+
+    Point e = new Point(-2.5, 5);
+    Point f = new Point(1, -45.7);
+    System.out.println("Расстояние между точками " +
+            "E(" + e.x + ";" + e.y + ") и F(" + f.x + ";" + f.y + ")" + " = " + Point.distance(e, f));
+
+    Point g = new Point(-0.0, 2.36);
+    Point h = new Point(-1, -12.745);
+    System.out.println("Расстояние между точками " +
+            "G(" + g.x + ";" + g.y + ") и H(" + h.x + ";" + h.y + ")" + " = " + Point.distance(g, h));
   }
 }
