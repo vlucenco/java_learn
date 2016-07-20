@@ -23,5 +23,10 @@ public class MyFirstProgram {
     Point h = new Point(-1, -12.745);
     System.out.println("Расстояние между точками " +
             "G(" + g.x + ";" + g.y + ") и H(" + h.x + ";" + h.y + ")" + " = " + Point.distance(g, h));
+
+    Point i = new Point(-0.0, 2.36);
+    Point j = new Point(-1, -12.745);
+    System.out.println("Расстояние между точками " +
+            "I(" + i.x + ";" + i.y + ") и G(" + j.x + ";" + j.y + ")" + " = " + i.distanceMethodWithOneParameter(j));
   }
 }
