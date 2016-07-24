@@ -1,4 +1,4 @@
-package ru.vitali.pft.addressbook;
+package ru.vitali.pft.addressbook.model;
 
 public class ContactData {
   private final String firstName;

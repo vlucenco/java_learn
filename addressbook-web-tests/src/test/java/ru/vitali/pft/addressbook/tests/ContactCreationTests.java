@@ -1,4 +1,4 @@
-package ru.vitali.pft.addressbook;
+package ru.vitali.pft.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
+import ru.vitali.pft.addressbook.model.ContactData;
 
 public class ContactCreationTests {
   FirefoxDriver wd;
