@@ -1,12 +1,13 @@
 package ru.vitali.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import ru.vitali.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
@@ -30,8 +31,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteSelectedContacts() {
+    ((JavascriptExecutor) wd).executeScript("confirm = function(message){return true;};");
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
-    wd.switchTo().alert().accept();
   }
 
   public void initContactModification() {
