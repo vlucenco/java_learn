@@ -3,6 +3,8 @@ package ru.vitali.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.vitali.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -15,14 +17,21 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillNewContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
     type(By.name("mobile"), contactData.getMobilePhoneNumber());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("address"), contactData.getAddress());
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
-  public void gotoAddNewContactPage() {
+  public void initContactCreation() {
     click(By.linkText("add new"));
   }
 
@@ -39,11 +48,11 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
-  public void modifyContactField(By locator, String text) {
-    type(locator, text);
-  }
-
   public void submitContactModification() {
     click(By.name("update"));
+  }
+
+  public void returnToHomePage() {
+    click(By.linkText("home page"));
   }
 }
