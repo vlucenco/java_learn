@@ -5,6 +5,8 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Objects;
+
 public class HelperBase {
   protected WebDriver wd;
 
@@ -37,10 +39,10 @@ public class HelperBase {
   }
 
   protected boolean isElementPresent(By locator) {
-    try{
+    try {
       wd.findElement(locator);
       return true;
-    } catch (NoSuchElementException ex){
+    } catch (NoSuchElementException ex) {
       return false;
     }
   }

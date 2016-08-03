@@ -32,6 +32,11 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactCreation() {
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+            && isElementPresent(By.name("submit"))) {
+      return;
+    }
     click(By.linkText("add new"));
   }
 
@@ -45,6 +50,11 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification() {
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+            && isElementPresent(By.name("update"))) {
+      return;
+    }
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
@@ -53,6 +63,9 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
     click(By.linkText("home page"));
   }
 }
