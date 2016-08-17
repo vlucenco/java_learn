@@ -3,16 +3,15 @@ package ru.vitali.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.vitali.pft.addressbook.model.ContactData;
-import ru.vitali.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactModification() {
-    app.getNavigationHelper().goToHomePage();
+    app.goTo().goToHomePage();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Vitali", "Lucenco", null, null, null, "test1"));
     }
