@@ -44,13 +44,19 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact(int index) {
+  public void selectContactById(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContacts() {
     ((JavascriptExecutor) wd).executeScript("confirm = function(message){return true;};");
-    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    click(By.cssSelector(".left>input[value='Delete']"));
+  }
+
+
+  public void delete(int index) {
+    selectContactById(index);
+    deleteSelectedContacts();
     returnToHomePage();
   }
 
@@ -74,18 +80,21 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home"));
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     initContactCreation();
     fillContactForm(contact, true);
     submitNewContactForm();
     returnToHomePage();
   }
 
-  public boolean isThereAContact() {
-    return isElementPresent(By.name("selected[]"));
+  public void modify(ContactData contact) {
+    initContactModification(contact);
+    fillContactForm(contact, false);
+    submitContactModification();
+    returnToHomePage();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -93,7 +102,7 @@ public class ContactHelper extends HelperBase {
       String firstName = element.findElement(By.xpath(".//td[3]")).getText();
       String lastName = element.findElement(By.xpath(".//td[2]")).getText();
       String address = element.findElement(By.xpath(".//td[4]")).getText();
-      ContactData contact = new ContactData(id, firstName, lastName, null, null, address, "test1");
+      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAddress(address).withGroup("test1");
       contacts.add(contact);
     }
     return contacts;

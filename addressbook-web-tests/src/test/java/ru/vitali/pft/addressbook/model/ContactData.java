@@ -1,34 +1,13 @@
 package ru.vitali.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String firstName;
-  private final String lastName;
-  private final String mobilePhoneNumber;
-  private final String email;
+  private int id = Integer.MAX_VALUE;
+  private String firstName;
+  private String lastName;
+  private String mobilePhoneNumber;
+  private String email;
   private String address;
   private String group;
-
-  public ContactData(int id, String firstName, String lastName, String mobilePhoneNumber, String email, String address, String group) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.mobilePhoneNumber = mobilePhoneNumber;
-    this.email = email;
-    this.address = address;
-    this.group = group;
-  }
-
-  public ContactData(String firstName, String lastName, String mobilePhoneNumber, String email, String address, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.mobilePhoneNumber = mobilePhoneNumber;
-    this.email = email;
-    this.address = address;
-
-    this.group = group;
-  }
 
   public String getFirstName() {
     return firstName;
@@ -58,8 +37,39 @@ public class ContactData {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withMobilePhoneNumber(String mobilePhoneNumber) {
+    this.mobilePhoneNumber = mobilePhoneNumber;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   @Override
