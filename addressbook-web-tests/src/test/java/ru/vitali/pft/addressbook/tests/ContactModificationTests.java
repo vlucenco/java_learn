@@ -30,8 +30,9 @@ public class ContactModificationTests extends TestBase {
             .withAddress("Кишинёв")
             .withGroup(contactToModify.getGroup());
     app.contact().modify(contact);
+    assertEquals(app.contact().count(), before.size());
     Contacts after = app.contact().all();
-    assertEquals(before.size(), after.size());
-    assertThat(after, equalTo(before.without(contactToModify).withAdded(contact)));
   }
+
+
 }
