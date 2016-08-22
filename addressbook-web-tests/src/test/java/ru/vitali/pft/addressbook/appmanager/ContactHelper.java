@@ -44,8 +44,12 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContactById(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+//  public void selectContactById(int id) {
+//    click(By.cssSelector("input[value='" + id + "']"));
+//  }
+
+  public void selectContactById(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContacts() {
@@ -55,7 +59,7 @@ public class ContactHelper extends HelperBase {
 
   public void initContactModification(ContactData contactToModify) {
     if (isElementPresent(By.tagName("h1"))
-            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+            && findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
             && isElementPresent(By.name("update"))) {
       return;
     }
