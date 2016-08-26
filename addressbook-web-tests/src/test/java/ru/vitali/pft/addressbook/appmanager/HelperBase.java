@@ -47,4 +47,8 @@ public class HelperBase {
       return false;
     }
   }
+
+  public String getElementValue(String locator) {
+    return wd.findElement(By.name(locator)).getAttribute("value");
+  }
 }

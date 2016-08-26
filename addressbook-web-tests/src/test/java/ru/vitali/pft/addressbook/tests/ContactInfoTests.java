@@ -21,7 +21,7 @@ public class ContactInfoTests extends TestBase {
   }
 
   @Test
-  public void testContactInfo() {
+  public void testContactInfoOnEditPage() {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact()
             .infoFromEditForm(contact);
@@ -32,7 +32,7 @@ public class ContactInfoTests extends TestBase {
   }
 
   private String mergeEmails(ContactData contact) {
-    return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+    return Arrays.asList(contact.getEmail1(), contact.getEmail2(), contact.getEmail3())
             .stream().filter((s) -> !s.equals("")).collect(Collectors.joining("\n"));
   }
 
