@@ -1,5 +1,7 @@
 package ru.vitali.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String firstName;
@@ -8,14 +10,13 @@ public class ContactData {
   private String homePhone;
   private String workPhone;
   private String allPhones;
-
   private String email1;
   private String email2;
   private String email3;
   private String allEmails;
-
   private String address;
   private String group;
+  private File photo;
 
   public String getFirstName() {
     return firstName;
@@ -67,6 +68,10 @@ public class ContactData {
 
   public int getId() {
     return id;
+  }
+
+  public File getPhoto() {
+    return photo;
   }
 
   public ContactData withId(int id) {
@@ -131,6 +136,11 @@ public class ContactData {
 
   public ContactData withGroup(String group) {
     this.group = group;
+    return this;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
     return this;
   }
 

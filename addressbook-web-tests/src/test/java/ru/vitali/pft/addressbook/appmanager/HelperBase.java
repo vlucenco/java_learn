@@ -2,6 +2,7 @@ package ru.vitali.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 
+import java.io.File;
 import java.util.Objects;
 
 public class HelperBase {
@@ -26,7 +27,13 @@ public class HelperBase {
     }
   }
 
-  public WebElement findElement(By locator){
+  protected void attach(By locator, File file) {
+    if (file != null) {
+      wd.findElement(locator).sendKeys(file.getAbsolutePath());
+    }
+  }
+
+  public WebElement findElement(By locator) {
     return wd.findElement(locator);
   }
 

@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import ru.vitali.pft.addressbook.model.ContactData;
 import ru.vitali.pft.addressbook.model.Contacts;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -14,11 +16,12 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     app.goTo().homePage();
     Contacts before = app.contact().all();
+    File photo = new File("/src/test/resources/aerial.jpg");
     ContactData contact = new ContactData()
             .withFirstName("Андрей")
             .withLastName("Иванов")
             .withAddress("")
-            .withGroup("test1");
+            .withPhoto(photo);
     app.contact().create(contact);
     assertEquals(app.contact().count(), before.size() + 1);
     Contacts after = app.contact().all();
