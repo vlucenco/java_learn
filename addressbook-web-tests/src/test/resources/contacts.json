@@ -1,6 +1,5 @@
 [
   {
-    "id": 2147483647,
     "firstName": "First Name 0",
     "lastName": "Last Name 0",
     "mobilePhone": "Mobile Phone 0",
@@ -9,10 +8,10 @@
     "email1": "Email1 0",
     "email2": "Email2 0",
     "email3": "Email3 0",
-    "address": "Address 0"
+    "address": "Address 0",
+    "group": "test1"
   },
   {
-    "id": 2147483647,
     "firstName": "First Name 1",
     "lastName": "Last Name 1",
     "mobilePhone": "Mobile Phone 1",
@@ -21,10 +20,10 @@
     "email1": "Email1 1",
     "email2": "Email2 1",
     "email3": "Email3 1",
-    "address": "Address 1"
+    "address": "Address 1",
+    "group": "test1"
   },
   {
-    "id": 2147483647,
     "firstName": "First Name 2",
     "lastName": "Last Name 2",
     "mobilePhone": "Mobile Phone 2",
@@ -33,6 +32,7 @@
     "email1": "Email1 2",
     "email2": "Email2 2",
     "email3": "Email3 2",
-    "address": "Address 2"
+    "address": "Address 2",
+    "group": "test1"
   }
 ]
