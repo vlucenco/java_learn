@@ -1,0 +1,38 @@
+<list>
+  <ru.vitali.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstName>First Name 0</firstName>
+    <lastName>Last Name 0</lastName>
+    <mobilePhone>Mobile Phone 0</mobilePhone>
+    <homePhone>Home Phone 0</homePhone>
+    <workPhone>Work Phone 0</workPhone>
+    <email1>Email1 0</email1>
+    <email2>Email2 0</email2>
+    <email3>Email3 0</email3>
+    <address>Address 0</address>
+  </ru.vitali.pft.addressbook.model.ContactData>
+  <ru.vitali.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstName>First Name 1</firstName>
+    <lastName>Last Name 1</lastName>
+    <mobilePhone>Mobile Phone 1</mobilePhone>
+    <homePhone>Home Phone 1</homePhone>
+    <workPhone>Work Phone 1</workPhone>
+    <email1>Email1 1</email1>
+    <email2>Email2 1</email2>
+    <email3>Email3 1</email3>
+    <address>Address 1</address>
+  </ru.vitali.pft.addressbook.model.ContactData>
+  <ru.vitali.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstName>First Name 2</firstName>
+    <lastName>Last Name 2</lastName>
+    <mobilePhone>Mobile Phone 2</mobilePhone>
+    <homePhone>Home Phone 2</homePhone>
+    <workPhone>Work Phone 2</workPhone>
+    <email1>Email1 2</email1>
+    <email2>Email2 2</email2>
+    <email3>Email3 2</email3>
+    <address>Address 2</address>
+  </ru.vitali.pft.addressbook.model.ContactData>
+</list>
