@@ -4,6 +4,10 @@
     <test name="Contacts">
         <classes>
             <class name="ru.vitali.pft.addressbook.tests.ContactCreationTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactModificationTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactInfoTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactDetailedInfoTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactDeletionTests"/>
         </classes>
     </test>
 </suite>

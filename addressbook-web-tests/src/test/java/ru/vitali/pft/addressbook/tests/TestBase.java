@@ -1,9 +1,7 @@
 package ru.vitali.pft.addressbook.tests;
 
 import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.vitali.pft.addressbook.appmanager.ApplicationManager;
 
