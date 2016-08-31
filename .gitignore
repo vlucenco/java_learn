@@ -16,3 +16,5 @@ gradle-app.setting
 .idea/workspace.xml
 
 *.log
+
+addressbook-web-tests/src/test/resources/groups.xml
