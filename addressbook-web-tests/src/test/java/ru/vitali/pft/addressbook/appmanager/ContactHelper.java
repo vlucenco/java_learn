@@ -1,5 +1,6 @@
 package ru.vitali.pft.addressbook.appmanager;
 
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.vitali.pft.addressbook.model.ContactData;
@@ -27,10 +28,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("address"), contactData.getAddress());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
       if (contactData.getGroup() != null) {
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        new Select(findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -39,7 +41,7 @@ public class ContactHelper extends HelperBase {
 
   public void initContactCreation() {
     if (isElementPresent(By.tagName("h1"))
-            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+            && findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
             && isElementPresent(By.name("submit"))) {
       return;
     }
@@ -47,7 +49,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContactById(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+    findElement(By.cssSelector("td>input[id='" + index + "']")).click();
   }
 
   public void deleteSelectedContacts() {
@@ -152,6 +154,7 @@ public class ContactHelper extends HelperBase {
               .withFirstName(firstName)
               .withLastName(lastName)
               .withAddress(address)
+              .withGroup("test0")
               .withAllPhones(allPhones)
               .withAllEmails(allEmails));
     }
@@ -159,15 +162,24 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isContactWithDetailedInfoPresent() {
-    if (findElement(By.xpath("//td[3][contains(text(), 'Тест')]")).isDisplayed()) {
+    try {
+      findElement(By.xpath("//td[3][contains(text(), 'Тест')]")).isDisplayed();
       return true;
+    } catch (NoSuchElementException ex) {
+      return false;
     }
-    return false;
   }
 
   public String getDetailedInfo(ContactData contact) {
     click(By.cssSelector("a[href=\"view.php?id=" + contact.getId() + "\"]"));
     return findElement(By.id("content")).getText();
+  }
+
+
+  public ContactData contactInfoFromHomePage(ContactData contact) {
+    String allEmails = findElement(By.xpath(".//*[@id='" + contact.getId() + "']/../../td[5]")).getText();
+    String allPhones = findElement(By.xpath(".//*[@id='" + contact.getId() + "']/../../td[6]")).getText();
+    return contact.withAllEmails(allEmails).withAllPhones(allPhones);
   }
 }
 
