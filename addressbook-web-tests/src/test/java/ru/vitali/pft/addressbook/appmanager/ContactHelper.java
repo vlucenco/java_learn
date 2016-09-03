@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.vitali.pft.addressbook.model.ContactData;
 import ru.vitali.pft.addressbook.model.Contacts;
+import ru.vitali.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -31,8 +32,10 @@ public class ContactHelper extends HelperBase {
     attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
-      if (contactData.getGroup() != null) {
-        new Select(findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(findElement(By.name("new_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -154,7 +157,7 @@ public class ContactHelper extends HelperBase {
               .withFirstName(firstName)
               .withLastName(lastName)
               .withAddress(address)
-              .withGroup("test0")
+              .inGroup(new GroupData().withName("test0"))
               .withAllPhones(allPhones)
               .withAllEmails(allEmails));
     }
