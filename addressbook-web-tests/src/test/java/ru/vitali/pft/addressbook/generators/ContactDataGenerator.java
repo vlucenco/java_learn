@@ -90,7 +90,7 @@ public class ContactDataGenerator {
               .withEmail1(String.format("Email1 %s", i))
               .withEmail2(String.format("Email2 %s", i))
               .withEmail3(String.format("Email3 %s", i))
-              .withGroup("test1"));
+              .withGroup("test0"));
     }
     return contacts;
   }

@@ -125,7 +125,11 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return new File(photo);
+    if(photo != null){
+      return new File(photo);
+    } else {
+      return null;
+    }
   }
 
   public ContactData withId(int id) {
@@ -201,11 +205,20 @@ public class ContactData {
   @Override
   public String toString() {
     return "ContactData{" +
-            "address='" + address + '\'' +
-            ", group='" + group + '\'' +
-            ", lastName='" + lastName + '\'' +
+            "id=" + id +
             ", firstName='" + firstName + '\'' +
-            ", id=" + id +
+            ", lastName='" + lastName + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            ", allPhones='" + allPhones + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            ", allEmails='" + allEmails + '\'' +
+            ", address='" + address + '\'' +
+            ", group='" + group + '\'' +
+            ", photo='" + photo + '\'' +
             '}';
   }
 
@@ -219,8 +232,13 @@ public class ContactData {
     if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
     if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-    if (address != null ? !address.equals(that.address) : that.address != null) return false;
-    return group != null ? group.equals(that.group) : that.group == null;
+    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+    if (email1 != null ? !email1.equals(that.email1) : that.email1 != null) return false;
+    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+    if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+    return address != null ? address.equals(that.address) : that.address == null;
 
   }
 
@@ -229,8 +247,13 @@ public class ContactData {
     int result = id;
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+    result = 31 * result + (email1 != null ? email1.hashCode() : 0);
+    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (address != null ? address.hashCode() : 0);
-    result = 31 * result + (group != null ? group.hashCode() : 0);
     return result;
   }
 }

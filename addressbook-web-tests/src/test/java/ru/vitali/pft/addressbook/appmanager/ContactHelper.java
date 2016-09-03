@@ -1,9 +1,5 @@
 package ru.vitali.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.vitali.pft.addressbook.model.ContactData;
@@ -30,7 +26,6 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("address"), contactData.getAddress());
 
     if (creation) {
@@ -157,7 +152,6 @@ public class ContactHelper extends HelperBase {
               .withFirstName(firstName)
               .withLastName(lastName)
               .withAddress(address)
-              .withGroup("test1")
               .withAllPhones(allPhones)
               .withAllEmails(allEmails));
     }

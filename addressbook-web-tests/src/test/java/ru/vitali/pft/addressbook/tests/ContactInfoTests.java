@@ -15,20 +15,24 @@ public class ContactInfoTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().homePage();
-    if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Vitali").withLastName("Lucenco").withGroup("test1"));
+    if (app.db().contacts().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstName("Vitali").withLastName("Lucenco").withAddress("Кишинёв")
+              .withEmail1("test1@test1.ru").withEmail2("test2@test2.ru").withEmail3("test3@test3.ru")
+              .withHomePhone("11 22 33").withMobilePhone("+373954").withWorkPhone("33-44-55"));
     }
   }
 
   @Test
   public void testContactInfoOnEditPage() {
-    ContactData contact = app.contact().all().iterator().next();
+    ContactData contact = app.db().contacts().iterator().next();
+    contact = app.contact().contactInfoFromHomePage(contact);
     ContactData contactInfoFromEditForm = app.contact()
             .infoFromEditForm(contact);
 
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
     assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
   }
 
   private String mergeEmails(ContactData contact) {
