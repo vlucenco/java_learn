@@ -191,6 +191,14 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("group page \"" + group.getName() + "\""));
     return contact;
   }
+
+  public ContactData removeContact(ContactData contact, GroupData group) {
+    viewGroupMembers(group);
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+    returnToHomePage();
+    return contact;
+  }
 }
 
 

@@ -1,6 +1,8 @@
 package ru.vitali.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
+import ru.vitali.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.util.Objects;
@@ -57,5 +59,9 @@ public class HelperBase {
 
   public String getElementValue(String locator) {
     return wd.findElement(By.name(locator)).getAttribute("value");
+  }
+
+  protected void viewGroupMembers(GroupData group) {
+    new Select(findElement(By.cssSelector("#right>select"))).selectByVisibleText(group.getName());
   }
 }

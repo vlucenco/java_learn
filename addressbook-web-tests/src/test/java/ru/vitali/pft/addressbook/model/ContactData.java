@@ -200,13 +200,9 @@ public class ContactData {
     return this;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            '}';
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
   }
 
   @Override
@@ -244,8 +240,12 @@ public class ContactData {
     return result;
   }
 
-  public ContactData inGroup(GroupData group) {
-    groups.add(group);
-    return this;
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 }
