@@ -178,11 +178,18 @@ public class ContactHelper extends HelperBase {
     return findElement(By.id("content")).getText();
   }
 
-
   public ContactData contactInfoFromHomePage(ContactData contact) {
     String allEmails = findElement(By.xpath(".//*[@id='" + contact.getId() + "']/../../td[5]")).getText();
     String allPhones = findElement(By.xpath(".//*[@id='" + contact.getId() + "']/../../td[6]")).getText();
     return contact.withAllEmails(allEmails).withAllPhones(allPhones);
+  }
+
+  public ContactData addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    new Select(findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    click(By.cssSelector(".right>input[type='submit']"));
+    click(By.linkText("group page \"" + group.getName() + "\""));
+    return contact;
   }
 }
 

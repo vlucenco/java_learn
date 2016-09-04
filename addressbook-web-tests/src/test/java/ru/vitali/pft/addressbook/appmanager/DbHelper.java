@@ -24,13 +24,13 @@ public class DbHelper {
     sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
   }
 
-  public Groups groups(){
+  public Groups groups() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List<GroupData> result = session.createQuery("from GroupData").list();
     session.getTransaction().commit();
     session.close();
-return new Groups(result);
+    return new Groups(result);
   }
 
   public Contacts contacts() {
@@ -40,5 +40,14 @@ return new Groups(result);
     session.getTransaction().commit();
     session.close();
     return new Contacts(result);
+  }
+
+  public Groups groupsForContact(ContactData contact) {
+    Groups groupsForContact = groups();
+    Groups invalidGroups = contact.getGroups();
+    for (GroupData group : invalidGroups) {
+      groupsForContact = groupsForContact.without(group);
+    }
+    return groupsForContact;
   }
 }

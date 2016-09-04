@@ -131,6 +131,10 @@ public class ContactData {
     }
   }
 
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
+
   public ContactData withId(int id) {
     this.id = id;
     return this;
@@ -194,10 +198,6 @@ public class ContactData {
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
     return this;
-  }
-
-  public Groups getGroups() {
-    return new Groups(groups);
   }
 
   @Override
