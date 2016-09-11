@@ -23,6 +23,7 @@ public class ApplicationManager {
   private AdminHelper adminHelper;
   private UserHelper userHelper;
   private DbHelper dbHelper;
+  private JamesHelper jamesHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -33,7 +34,7 @@ public class ApplicationManager {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
-    dbHelper = new DbHelper();
+//    dbHelper = new DbHelper();
   }
 
   public void stop() {
@@ -85,7 +86,17 @@ public class ApplicationManager {
     return userHelper;
   }
 
+  public JamesHelper james() {
+    if (jamesHelper == null) {
+      jamesHelper = new JamesHelper(this);
+    }
+    return jamesHelper;
+  }
+
   public DbHelper db() {
+    if (dbHelper == null) {
+      dbHelper = new DbHelper();
+    }
     return dbHelper;
   }
 
