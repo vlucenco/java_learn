@@ -59,4 +59,11 @@ public class HelperBase {
   public String getElementValue(String locator) {
     return wd.findElement(By.name(locator)).getAttribute("value");
   }
+
+  protected void login(String username, String password) {
+    wd.get(app.getProperty("web.baseUrl") + "/login_page.php");
+    type(By.name("username"), username);
+    type(By.name("password"), password);
+    click(By.cssSelector("input[value='Login']"));
+  }
 }
