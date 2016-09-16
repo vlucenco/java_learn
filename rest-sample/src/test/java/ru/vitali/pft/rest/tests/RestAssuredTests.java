@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.vitali.pft.rest.model.Issue;
 
@@ -13,7 +14,12 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestAssuredTests extends TestBase {
+public class RestAssuredTests {
+
+  @BeforeClass
+  public void init() {
+    RestAssured.authentication = RestAssured.basic("LSGjeU4yP1X493ud1hNniA==", "");
+  }
 
   @Test
   public void testCreateIssue() throws IOException {
@@ -26,10 +32,11 @@ public class RestAssuredTests extends TestBase {
   }
 
   private Set<Issue> getIssues() throws IOException {
-    String json = RestAssured.get("http://demo.bugify.com/api/issues.json").asString();
+    String json = RestAssured.get("http://demo.bugify.com/api/issues.json").toString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
-    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
+    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
+    }.getType());
   }
 
   private int createIssue(Issue newIssue) throws IOException {
