@@ -6,9 +6,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
 import ru.vitali.pft.mantis.appmanager.ApplicationManager;
-import ru.vitali.pft.mantis.model.Issue;
 
 import javax.xml.rpc.ServiceException;
 import java.io.IOException;
@@ -37,7 +35,7 @@ public class TestBase {
     MantisConnectPortType mc = app.soap().getMantisConnect();
     IssueData issueData = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
     String status = issueData.getStatus().getName();
-    return !status.equals("resolved");
+    return !(status.equals("resolved") || status.equals("closed"));
   }
 
   public void skipIfNotFixed(int issueId) throws MalformedURLException, ServiceException, RemoteException {
