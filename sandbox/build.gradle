@@ -11,5 +11,5 @@ dependencies{
 }
 
 test {
-    use TestNG()
+    useTestNG()
 }
