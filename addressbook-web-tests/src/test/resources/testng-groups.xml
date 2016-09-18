@@ -4,6 +4,15 @@
     <test name="Groups">
         <classes>
             <class name="ru.vitali.pft.addressbook.tests.GroupModificationTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.GroupCreationTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.GroupDeletionTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactCreationTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactModificationTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactDeletionTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactDetailedInfoTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.ContactInfoTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.AddContactToGroupTests"/>
+            <class name="ru.vitali.pft.addressbook.tests.RemoveContactFromGroupTests"/>
         </classes>
     </test>
 </suite>
