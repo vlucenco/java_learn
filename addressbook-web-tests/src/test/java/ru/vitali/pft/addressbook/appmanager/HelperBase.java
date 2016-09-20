@@ -5,13 +5,14 @@ import org.openqa.selenium.support.ui.Select;
 import ru.vitali.pft.addressbook.model.GroupData;
 
 import java.io.File;
-import java.util.Objects;
 
 public class HelperBase {
   protected WebDriver wd;
+  public ApplicationManager app;
 
-  public HelperBase(WebDriver wd) {
-    this.wd = wd;
+  public HelperBase(ApplicationManager app) {
+    this.app = app;
+    this.wd = app.wd;
   }
 
   protected void click(By locator) {

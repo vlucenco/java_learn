@@ -56,10 +56,10 @@ public class ApplicationManager {
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
-    groupHelper = new GroupHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
-    contactHelper = new ContactHelper(wd);
+    groupHelper = new GroupHelper(this);
+    navigationHelper = new NavigationHelper(this);
+    sessionHelper = new SessionHelper(this);
+    contactHelper = new ContactHelper(this);
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
 
   }

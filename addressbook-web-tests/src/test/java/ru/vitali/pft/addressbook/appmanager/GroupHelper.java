@@ -1,19 +1,16 @@
 package ru.vitali.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.vitali.pft.addressbook.model.GroupData;
 import ru.vitali.pft.addressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
-  public GroupHelper(WebDriver wd) {
-    super(wd);
+  public GroupHelper(ApplicationManager app) {
+    super(app);
   }
 
   public void returnToGroupPage() {

@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper(WebDriver wd) {
-    super(wd);
+  public ContactHelper(ApplicationManager app) {
+    super(app);
   }
 
   public void submitNewContactForm() {
