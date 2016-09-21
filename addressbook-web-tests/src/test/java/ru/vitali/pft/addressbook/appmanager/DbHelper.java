@@ -10,6 +10,7 @@ import ru.vitali.pft.addressbook.model.Contacts;
 import ru.vitali.pft.addressbook.model.GroupData;
 import ru.vitali.pft.addressbook.model.Groups;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DbHelper {
@@ -49,5 +50,16 @@ public class DbHelper {
       groupsForContact = groupsForContact.without(group);
     }
     return groupsForContact;
+  }
+
+  public List<ContactData> getContactsWithGroup() {
+    Contacts contacts = contacts();
+    List<ContactData> contactsWithGroup = new ArrayList<>();
+    for (ContactData contact : contacts) {
+      if (contact.getGroups().size() > 0) {
+        contactsWithGroup.add(contact);
+      }
+    }
+    return contactsWithGroup;
   }
 }

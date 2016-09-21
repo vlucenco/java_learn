@@ -1,6 +1,9 @@
 package ru.vitali.pft.addressbook.appmanager;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.vitali.pft.addressbook.model.ContactData;
@@ -192,12 +195,28 @@ public class ContactHelper extends HelperBase {
     return contact;
   }
 
-  public ContactData removeContact(ContactData contact, GroupData group) {
+  public ContactData removeContactFromGroup(ContactData contact, GroupData group) {
     viewGroupMembers(group);
     selectContactById(contact.getId());
     click(By.name("remove"));
     returnToHomePage();
     return contact;
+  }
+
+  public ContactData getContactWithGroup() {
+    List<ContactData> contacts = app.db().getContactsWithGroup();
+
+    if (contacts.size() > 0) {
+      return contacts.iterator().next();
+    } else {
+      ContactData contact = app.db().contacts().iterator().next();
+      GroupData group = new GroupData().withName("groupToDeleteContactFrom");
+      app.goTo().groupPage();
+      app.group().create(group);
+      app.goTo().homePage();
+      app.contact().addToGroup(contact, group);
+      return contact;
+    }
   }
 }
 
