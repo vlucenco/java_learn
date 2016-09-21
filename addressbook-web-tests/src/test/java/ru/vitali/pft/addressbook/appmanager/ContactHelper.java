@@ -9,6 +9,7 @@ import org.testng.Assert;
 import ru.vitali.pft.addressbook.model.ContactData;
 import ru.vitali.pft.addressbook.model.Contacts;
 import ru.vitali.pft.addressbook.model.GroupData;
+import ru.vitali.pft.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -216,6 +217,18 @@ public class ContactHelper extends HelperBase {
       app.goTo().homePage();
       app.contact().addToGroup(contact, group);
       return contact;
+    }
+  }
+
+  public GroupData getGroupForContact(ContactData contact) {
+    Groups groupsForContact = app.db().groupsForContact(contact);
+    if (groupsForContact.size() > 0) {
+      return groupsForContact.iterator().next();
+    }else {
+      GroupData groupForContact = new GroupData().withName("groupForContact");
+      app.goTo().groupPage();
+      app.group().create(groupForContact);
+      return groupForContact;
     }
   }
 }
